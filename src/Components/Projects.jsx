@@ -10,7 +10,7 @@ function Projects() {
         technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
         image: "/images/wanderworld.png",
         github: "https://github.com/poojam0650-collab/explore-world",
-        live: "https://unique-biscuit-2d3140.netlify.app/",
+        live: "https://statuesque-hamster-b0b2e6.netlify.app/",
     },
     ];
 
