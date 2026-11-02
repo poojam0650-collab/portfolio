@@ -12,6 +12,15 @@ function Projects() {
         github: "https://github.com/poojam0650-collab/explore-world",
         live: "https://statuesque-hamster-b0b2e6.netlify.app/",
     },
+    {
+        title: "ShopSphere — Full Stack E-Commerce Website",
+        description:
+          "A responsive e-commerce web application that allows users to explore products, search and filter items, manage their cart and wishlist, create accounts, and place orders. It also includes an Admin Panel to manage products, monitor orders, update order statuses, view registered customers, and track store statistics.",
+        technologies: [ "React.js", "JavaScript", "React Router", "CSS", "MockAPI", "LocalStorage"],
+        image: "/images/shopsphere.png",
+        github: "https://github.com/poojam0650-collab/explore-world",
+        live: "https://flourishing-puppy-a50786.netlify.app/",
+},
     ];
 
   return (
