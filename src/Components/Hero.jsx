@@ -111,7 +111,11 @@ function Hero() {
         </div>
 
         <div className="hero-circle">
-          &lt; / &gt;
+        <img
+        src="/images/hero-profile.jpeg"
+        alt="Pooja - Python Full Stack Developer"
+        className="hero-profile-image"
+        />
         </div>
 
         <div className="python-card">

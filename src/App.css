@@ -250,6 +250,14 @@
   border-color: rgba(54, 214, 160, 0.45);
   transform: translateY(-3px);
 }
+.hero-profile-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
 
 
 /* =========================
@@ -287,6 +295,7 @@
   box-shadow:
     0 0 50px rgba(54, 214, 160, 0.08),
     inset 0 0 40px rgba(54, 214, 160, 0.04);
+  overflow: hidden;
 }
 
 .code-card,
