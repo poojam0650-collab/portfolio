@@ -7,46 +7,59 @@ import {
   FiMail,
 } from "react-icons/fi";
 
+import {
+  FaPython,
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
+} from "react-icons/fa";
+
+import {
+  SiJavascript,
+  SiDjango,
+} from "react-icons/si";
+
 function Hero() {
   return (
     <section className="hero" id="home">
+      {/* LEFT SIDE CONTENT */}
       <div className="hero-content">
+        <motion.p
+          className="hero-greeting"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Hi, I'm
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          Pooja M
+        </motion.h1>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          Python Full Stack Developer
+        </motion.h2>
 
         <motion.p
-  className="hero-greeting"
-  initial={{ opacity: 0, y: 15 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
->
-  Hi, I'm
-</motion.p>
+          className="hero-description"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          I build responsive and user-friendly web applications
+          using Python, React, and modern web technologies.
+        </motion.p>
 
-<motion.h1
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.1 }}
->
-  Pooja M
-</motion.h1>
-
-<motion.h2
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.2 }}
->
-  Python Full Stack Developer
-</motion.h2>
-
-<motion.p
-  className="hero-description"
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.3 }}
->
-  I build responsive and user-friendly web applications
-  using Python, React, and modern web technologies.
-</motion.p>
-
+        {/* BUTTONS */}
         <motion.div
           className="hero-buttons"
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +71,7 @@ function Hero() {
             className="primary-btn"
             whileHover={{ y: -3, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-        >
+          >
             View My Projects
             <FiArrowUpRight />
           </motion.a>
@@ -71,59 +84,88 @@ function Hero() {
           >
             Download Resume
             <FiDownload />
-         </motion.a>
-          
-          
-          
+          </motion.a>
         </motion.div>
 
+        {/* SOCIAL LINKS */}
         <motion.div
           className="hero-socials"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.5 }}
         >
-          <a href="https://github.com/poojam0650-collab" aria-label="GitHub">
+          <a
+            href="https://github.com/poojam0650-collab"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
             <FiGithub />
           </a>
 
-          <a href="https://www.linkedin.com/in/pooja0309" aria-label="LinkedIn">
+          <a
+            href="https://www.linkedin.com/in/pooja0309"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
             <FiLinkedin />
           </a>
 
-          <a href="mailto:poojam0650@gmail.com" aria-label="Email">
+          <a
+            href="mailto:poojam0650@gmail.com"
+            aria-label="Email"
+          >
             <FiMail />
           </a>
         </motion.div>
-
       </div>
 
+      {/* RIGHT SIDE PROFILE ORBIT DESIGN */}
       <motion.div
         className="hero-visual"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <div className="code-card">
-          <span>Build</span>
-          <span>Develop</span>
-          <span>Grow</span>
-        </div>
+        {/* OUTER ROTATING RING */}
+        <div className="orbit-ring orbit-ring-outer"></div>
 
+        {/* INNER STATIONARY RING */}
+        <div className="orbit-ring orbit-ring-inner"></div>
+
+        {/* PROFILE PHOTO */}
         <div className="hero-circle">
-        <img
-        src="/images/hero-profile.jpeg"
-        alt="Pooja - Python Full Stack Developer"
-        className="hero-profile-image"
-        />
+          <img
+            src="/images/hero-profile.jpeg"
+            alt="Pooja - Python Full Stack Developer"
+            className="hero-profile-image"
+          />
         </div>
 
-        <div className="python-card">
-          Python
+        {/* TECHNOLOGY ICONS - FIXED POSITIONS */}
+        <div className="orbit-icon icon-top">
+          <FaPython />
         </div>
 
-        <div className="floating-text">
-          Turning ideas into real web apps
+        <div className="orbit-icon icon-right-top">
+          <FaReact />
+        </div>
+
+        <div className="orbit-icon icon-right-bottom">
+          <SiJavascript />
+        </div>
+
+        <div className="orbit-icon icon-bottom">
+          <SiDjango />
+        </div>
+
+        <div className="orbit-icon icon-left-bottom">
+          <FaCss3Alt />
+        </div>
+
+        <div className="orbit-icon icon-left-top">
+          <FaHtml5 />
         </div>
       </motion.div>
     </section>
