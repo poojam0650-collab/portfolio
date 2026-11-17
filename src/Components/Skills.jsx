@@ -1,22 +1,52 @@
+
 import { motion } from "framer-motion";
+
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaPython,
+  FaDatabase,
+  FaCode,
+  FaGitAlt,
+  FaGithub,
+  FaTools,
+} from "react-icons/fa";
 
 function Skills() {
   const skillGroups = [
     {
       title: "Frontend",
-      skills: ["HTML", "CSS", "JavaScript", "React"],
+      skills: [
+        { name: "HTML", icon: FaHtml5 },
+        { name: "CSS", icon: FaCss3Alt },
+        { name: "JavaScript", icon: FaJs },
+        { name: "React", icon: FaReact },
+      ],
     },
     {
       title: "Backend",
-      skills: ["Python", "Django", "REST APIs"],
+      skills: [
+        { name: "Python", icon: FaPython },
+        { name: "Django", icon: FaCode },
+        { name: "REST APIs", icon: FaDatabase },
+      ],
     },
     {
       title: "Database",
-      skills: ["MySQL", "SQLite"],
+      skills: [
+        { name: "MySQL", icon: FaDatabase },
+        { name: "SQLite", icon: FaDatabase },
+      ],
     },
     {
       title: "Tools & Version Control",
-      skills: ["Git", "GitHub", "VS Code"],
+      skills: [
+        { name: "Git", icon: FaGitAlt },
+        { name: "GitHub", icon: FaGithub },
+        { name: "VS Code", icon: FaTools },
+      ],
     },
   ];
 
@@ -57,9 +87,29 @@ function Skills() {
             <h3>{group.title}</h3>
 
             <div className="skill-list">
-              {group.skills.map((skill) => (
-                <span key={skill}>{skill}</span>
-              ))}
+              {group.skills.map((skill) => {
+                const Icon = skill.icon;
+
+                return (
+                  <div
+                    className="skill-icon-wrapper"
+                    key={skill.name}
+                  >
+                    <span
+                      className="skill-icon"
+                      title={skill.name}
+                      aria-label={skill.name}
+                      role="img"
+                    >
+                      <Icon />
+                    </span>
+
+                    <span className="skill-tooltip">
+                      {skill.name}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
         ))}
