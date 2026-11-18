@@ -1,27 +1,63 @@
-import { motion } from "framer-motion";
-import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FiArrowUpRight,
+  FiGithub,
+  FiChevronLeft,
+  FiChevronRight,
+} from "react-icons/fi";
 
 function Projects() {
   const projects = [
     {
-        title: "WanderWorld — Travel & Tour Booking Website",
-        description:
-           "A responsive travel website that allows users to explore destinations, search for trips, view tour packages, and submit travel bookings through an interactive multi-page interface.",
-        technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-        image: "/images/wanderworld.png",
-        github: "https://github.com/poojam0650-collab/explore-world",
-        live: "https://statuesque-hamster-b0b2e6.netlify.app/",
+      title: "WanderWorld — Travel & Tour Booking Website",
+      description:
+        "A responsive travel website that allows users to explore destinations, search for trips, view tour packages, and submit travel bookings through an interactive multi-page interface.",
+      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      image: "/images/wanderworld.png",
+      github: "https://github.com/poojam0650-collab/explore-world",
+      live: "https://statuesque-hamster-b0b2e6.netlify.app/",
     },
     {
-        title: "ShopSphere — Full Stack E-Commerce Website",
-        description:
-          "A responsive e-commerce web application that allows users to explore products, search and filter items, manage their cart and wishlist, create accounts, and place orders. It also includes an Admin Panel to manage products, monitor orders, update order statuses, view registered customers, and track store statistics.",
-        technologies: [ "React.js", "JavaScript", "React Router", "CSS", "MockAPI", "LocalStorage"],
-        image: "/images/shopsphere.png",
-        github: "https://github.com/poojam0650-collab/explore-world",
-        live: "https://flourishing-puppy-a50786.netlify.app/",
-},
-    ];
+      title: "ShopSphere — Full Stack E-Commerce Website",
+      description:
+        "A responsive e-commerce web application that allows users to explore products, search and filter items, manage their cart and wishlist, create accounts, and place orders. It also includes an Admin Panel to manage products, monitor orders, update order statuses, view registered customers, and track store statistics.",
+      technologies: [
+        "React.js",
+        "JavaScript",
+        "React Router",
+        "CSS",
+        "MockAPI",
+        "LocalStorage",
+      ],
+      image: "/images/shopsphere.png",
+      github: "https://github.com/poojam0650-collab/explore-world",
+      live: "https://flourishing-puppy-a50786.netlify.app/",
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextProject = () => {
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentIndex(
+      (prev) => (prev - 1 + projects.length) % projects.length
+    );
+  };
+
+  // Automatically change project every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextProject();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [projects.length]);
+
+  const currentProject = projects[currentIndex];
 
   return (
     <section className="projects" id="projects">
@@ -34,33 +70,38 @@ function Projects() {
         </p>
       </div>
 
-      <div className="projects-grid">
-        {projects.map((project, index) => (
+      <div className="projects-carousel">
+
+        <AnimatePresence mode="wait">
           <motion.div
+            key={currentIndex}
             className="project-card"
-            key={project.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.15 }}
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -60 }}
+            transition={{ duration: 0.45 }}
           >
             <div className="project-image">
-            <img src={project.image} alt={project.title} />
+              <img
+                src={currentProject.image}
+                alt={currentProject.title}
+              />
             </div>
-            <div className="project-content">
-              <h3>{project.title}</h3>
 
-              <p>{project.description}</p>
+            <div className="project-content">
+              <h3>{currentProject.title}</h3>
+
+              <p>{currentProject.description}</p>
 
               <div className="project-tech">
-                {project.technologies.map((tech) => (
+                {currentProject.technologies.map((tech) => (
                   <span key={tech}>{tech}</span>
                 ))}
               </div>
 
               <div className="project-links">
                 <a
-                  href={project.github}
+                  href={currentProject.github}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -69,7 +110,7 @@ function Projects() {
                 </a>
 
                 <a
-                  href={project.live}
+                  href={currentProject.live}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -79,7 +120,46 @@ function Projects() {
               </div>
             </div>
           </motion.div>
-        ))}
+        </AnimatePresence>
+
+        {/* Carousel Navigation */}
+        <div className="carousel-navigation">
+
+          <button
+            className="carousel-arrow"
+            onClick={prevProject}
+            aria-label="Previous project"
+          >
+            <FiChevronLeft />
+          </button>
+
+          <div className="carousel-indicators">
+            {projects.map((project, index) => (
+              <button
+                key={project.title}
+                className={`carousel-dot ${
+                  currentIndex === index ? "active" : ""
+                }`}
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to project ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          <span className="carousel-count">
+            {String(currentIndex + 1).padStart(2, "0")} /{" "}
+            {String(projects.length).padStart(2, "0")}
+          </span>
+
+          <button
+            className="carousel-arrow"
+            onClick={nextProject}
+            aria-label="Next project"
+          >
+            <FiChevronRight />
+          </button>
+
+        </div>
       </div>
     </section>
   );
