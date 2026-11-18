@@ -16,7 +16,7 @@ function Projects() {
       technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
       image: "/images/wanderworld.png",
       github: "https://github.com/poojam0650-collab/explore-world",
-      live: "https://statuesque-hamster-b0b2e6.netlify.app/",
+      live: "https://explore-world-mndkyd131-web-dd63.vercel.app/",
     },
     {
       title: "ShopSphere — Full Stack E-Commerce Website",
@@ -32,7 +32,7 @@ function Projects() {
       ],
       image: "/images/shopsphere.png",
       github: "https://github.com/poojam0650-collab/explore-world",
-      live: "https://flourishing-puppy-a50786.netlify.app/",
+      live: "https://shopsphere-bvt6ff94d-web-dd63.vercel.app/",
     },
   ];
 
